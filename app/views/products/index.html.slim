@@ -1,0 +1,23 @@
+.ui.segments
+  .ui.segment.padded
+    h1.ui.header style='margin-top: 0'
+      i.icon.tag
+      | Products
+
+
+    = simple_form_for :product, url: root_path, html: {class: 'ui form', id: 'products'} do |f|
+      .inline.fields
+        = f.input :sort, collection: Product::SORT_CRITERIA, label_method: :humanize, include_blank: false, label: false, required: false, input_html: {class: 'ui selection floating dropdown'}
+        = f.input :country, collection: @countries, include_blank: "Country", input_html: {class: 'ui search selection floating dropdown'}, label: false
+        .ui.icon.button.reset-button
+          i.icon.undo
+
+  .ui.secondary.segment.padded
+    table.ui.blue.table#products_datatable data-source="#{root_path(format: :json)}" data-length-menu=(10..50).step(5).to_a
+      thead
+        tr
+          th Title
+          th Tags
+          th Origin Country
+          th Price
+      tbody
