@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   include PgSearch::Model
 
-  validates :title, :description, :tags, :price, presence: true
+  validates :title, :description, :price, presence: true
 
   validates :price, numericality: { greater_than: 0 }
 

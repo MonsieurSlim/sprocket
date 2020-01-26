@@ -38,8 +38,6 @@ group :development, :test do
   gem 'rspec-collection_matchers'
   gem 'pry'
   gem 'database_cleaner'
-  gem 'timecop'
-  gem 'rspec-activejob'
   gem 'rspec-benchmark'
   gem 'dotenv-rails'
 end
