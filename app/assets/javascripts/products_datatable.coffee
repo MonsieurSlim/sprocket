@@ -18,7 +18,7 @@ $(document).on "turbolinks:load", ->
     ]
 
 
-$(document).on 'change', "select#product_country, select#product_sort", ->
+$(document).on 'change', "select#product_country, select#product_sort, #products_datatable_filter input", ->
   $('#products_datatable').DataTable().ajax.reload()
 
 $(document).on 'click', "form#product .reset-button", ->
