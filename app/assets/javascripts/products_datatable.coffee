@@ -14,6 +14,7 @@ $(document).on "turbolinks:load", ->
           price: $("input#product_price").val() }
     columns: [
       { data: 'title' }
+      { data: 'description' }
       { data: 'tags' }
       { data: 'country' }
       { data: 'price' }
@@ -33,5 +34,6 @@ $(document).on 'click', "form#products .reset-button", ->
 $(document).on 'change', "form#products .ui.radio.checkbox", ->
   $('#products_datatable').DataTable().ajax.reload()
 
-$(document).on 'change', "input#product_price", ->
+$(document).on 'keyup', "input#product_price", ->
   $('#products_datatable').DataTable().ajax.reload()
+

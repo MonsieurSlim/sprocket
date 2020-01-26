@@ -2,10 +2,11 @@ class ProductDatatable < BaseDatatable
 
   def view_columns
     @view_columns ||= {
-        title:  { source: "Product.title", cond: :like, searchable: true, orderable: false },
-        tags:  { source: "Product.tags", searchable: false, orderable: false },
-        country:  { source: "Product.country", searchable: false, orderable: true },
-        price:  { source: "Product.price", searchable: false, orderable: true }
+        title:  { source: "Product.title" },
+        description:  { source: "Product.description" },
+        tags:  { source: "Product.tags" },
+        country:  { source: "Product.country" },
+        price:  { source: "Product.price" }
     }
   end
 
@@ -13,6 +14,7 @@ class ProductDatatable < BaseDatatable
     records.map do |record|
       {
           title: record.title,
+          description: record.description,
           tags: view.product_tags(record.tags),
           country: record.country,
           price: number_to_currency(record.price)
