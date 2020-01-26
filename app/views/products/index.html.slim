@@ -9,6 +9,16 @@
       .inline.fields
         = f.input :sort, collection: Product::SORT_CRITERIA, label_method: :humanize, include_blank: false, label: false, required: false, input_html: {class: 'ui selection floating dropdown'}
         = f.input :country, collection: @countries, include_blank: "Country", input_html: {class: 'ui search selection floating dropdown'}, label: false
+
+        - ["price_equals", "price_less_than", "price_greater_than"].each_with_index do |item, idx|
+          .field
+            .ui.radio.checkbox
+              input type="radio" name="pricing" tabindex="0" class="hidden" id=item
+              label
+                = item.humanize
+
+        = f.input :price, as: :decimal, label: false, placeholder: "Price"
+
         .ui.icon.button.reset-button
           i.icon.undo
 

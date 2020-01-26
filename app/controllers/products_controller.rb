@@ -14,8 +14,8 @@ class ProductsController < ApplicationController
   def filter_products
     query = (params[:search][:value] rescue nil)
     @products = Product.search(query).for_country(params[:country])
-    @products = @products.send(params[:sort]) if params[:sort] && params[:sort] != "relevance"
-    # @products = @products.send(params[:pricing], params[:pricing][:price]) if params[:pricing][:price].presence
+    @products = @products.send(params[:sort]) if params[:sort].presence && params[:sort] != "relevance"
+    @products = @products.send(params[:pricing], params[:price]) if params[:pricing] && params[:price].to_i > 0
   end
 
 end
